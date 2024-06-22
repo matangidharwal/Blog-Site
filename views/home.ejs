@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>Homepage</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+  <!-- This line is using EJS syntax to include the content of the file nav located in the partials directory. The <%- %> syntax is used for unescaped output, which means any HTML or code within the included file will be rendered as is without escaping. -->
+
+  <!-- <%= JSON.stringify(user)%> -->
+  <!-- This line is using EJS syntax to output the JSON representation of the user object. The <%= %> syntax is used for escaped output, which means the HTML and code within the output will be escaped to prevent XSS attacks. JSON.stringify(user) converts the user object into a JSON string. -->
+
+  <div class = "container mt-4">
+    <div class=" row row-cols-3">
+    <% blogs.forEach(blog =>{%>
+      <div class ="col">
+      <div class="card col" style="width: 18rem;">
+        <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title"><%= blog.title %></h5>
+          <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+    <%}) %>
+  </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+  <!-- Similar to the first line, this line is using EJS syntax to include the content of the file scripts located in the partials directory. The content of this file is typically JavaScript code or script tags used for client-side functionality. -->
+</body>
+</html>
